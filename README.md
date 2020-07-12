@@ -16,7 +16,7 @@ This package fixes most of the common bugs and issues that a server owner may el
 ## Step-by-step installation guide
 NOTE: If you already have your own Download & Precacher system, then be careful not overwriting your downloads.ini with the one provided in this package.
 - Go to your csgo or cstrike directory (NOTE! Some servers name this directory the server's IP instead).
-- Drag and drop the two folders named: "cfg" and "addons" in to the directory.
+- Drag and drop the four folders named: "addons", "cfg, "materials", and "sound" in to the directory.
 - Now go to csgo/cfg find and open the file named: "autoexec.cfg"
 - Add the text from the file: ```Add this to your autoexec.cfg file``` to your autoexec.cfg file, save the changes, and close both the files.
 - Now go to csgo/cfg find and open the file named: "server.cfg"
