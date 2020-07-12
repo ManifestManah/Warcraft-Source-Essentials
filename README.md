@@ -4,7 +4,7 @@ This is an easy-to-install package which provides your server with multiple fixe
 
 ## Requirements
 For this package to work, it is required that you first install the following:
-- [SourceMod] (https://www.sourcemod.net/downloads.php)
+- [SourceMod](https://www.sourcemod.net/downloads.php)
 - [EventScripts-Emulator](https://github.com/Ayuto/EventScripts-Emulator)
 - [Warcraft-Source](https://github.com/ThaPwned/WCS)
 - [Warcraft-Source: Essentials](https://github.com/ManifestManah/Warcraft-Source-Essentials)
