@@ -2,6 +2,14 @@
 This is an easy-to-install package which provides your server with multiple fixes and commands for Tha Pwned's version of the Warcraft-Source modification which can be found and downloaded [here](https://github.com/ThaPwned/WCS).
 
 
+## Requirements
+For this package to work, it is required that you first install the following:
+- [SourceMod] (https://www.sourcemod.net/downloads.php)
+- [EventScripts-Emulator](https://github.com/Ayuto/EventScripts-Emulator)
+- [Warcraft-Source](https://github.com/ThaPwned/WCS)
+- [Warcraft-Source: Essentials](https://github.com/ManifestManah/Warcraft-Source-Essentials)
+
+
 ## What does this package do? - And what does it contain?
 This package fixes most of the common bugs and issues that a server owner may elsewise encounter when he is running a Warcraft-Source server. The package also contains multiple server commands which are used by many races, without these commands those races will either partially or completely be unfunctional. The package also contains multiple sound files which are used in some races, in addition it also contains a lot of material files, these files are required in order for server to display the visual effects that every race have. To make it easier for people to install and use this package, I have included a download and precacher plugin along with a list of all the materials and sounds that are included in this package.
 
