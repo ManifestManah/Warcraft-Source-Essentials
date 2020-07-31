@@ -416,7 +416,7 @@ def is_player_stuck(player_index, origin):
 
 def valid_repeat(repeat):
     try:
-        if repeat.status == RepeatStatus.RUNNING:
+        if repeat.status == RepeatStatus.RUNNIN:
             return True
     except:
         return False

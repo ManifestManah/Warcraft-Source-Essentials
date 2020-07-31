@@ -3,7 +3,10 @@ block load
 	//Turns on Eventscript's "Noisy" mode, required for some races' skills to work 
 	es_xdoblock corelib/noisy_on
 
-	//Sets all the variables that we are going to use in races' skills
+	//Turns on/off logging for all the races which has logging implemented.
+	es_xset wcs_race_debugging 1
+
+	//Sets all the variables that we are going to use in races' skills - normally you should not do it this way, you should use the var.txt found at cfg/source-python/wcs/var.txt
 	es_xset wcs_targetid_two 0
 	es_xset wcs_execute_ultimate 0
 	es_xset wcs_initial_players_struck 0
