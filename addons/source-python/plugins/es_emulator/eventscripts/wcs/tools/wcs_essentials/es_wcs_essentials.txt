@@ -227,3 +227,56 @@ block load
 	es_xset wcs_dice8 0
 	es_xset wcs_dice9 0
 }
+
+//Phoenix Skill's ressurection part
+event player_death
+{
+	if (event_var(es_userteam) = 2) then es_xset wcs_team #t
+	if (event_var(es_userteam) = 3) then es_xset wcs_team #ct
+	es wcsgroup get phoenix wcs_phoenix server_var(wcs_team)
+	if (server_var(wcs_phoenix) > 0) do
+	{
+		ifx true(wcs_race_debugging) do
+		{
+			es_log [Feature]: Phoenix Skill - [Block] Event Player_Death (START)
+		}
+		es_tell event_var(userid) #multi #green[WCS] #lightgreenPhoenix - You will be ressurected in 3 seconds!
+		es_delayed 3 wcs_spawn event_var(userid) 1
+		es_math wcs_phoenix - 1
+		es wcsgroup set phoenix server_var(wcs_team) server_var(wcs_phoenix)
+		ifx true(wcs_race_debugging) do
+		{
+			es_log [Feature]: Phoenix Skill - [Block] Event Player_Death (END)
+		}
+	}
+}
+
+//Phoenix Skill's reset all phoenix wcsgroups for the team
+event round_end
+{
+	ifx true(wcs_race_debugging) do
+	{
+		es_log [Feature]: Phoenix Skill - [Block] Event Round_End (START)
+	}
+	es wcsgroup set phoenix #ct 0
+	es wcsgroup set phoenix #t 0
+	es wcs_foreach player wcs_player #all "es_xdoblock wcs/tools/wcs_essentials/phoenix_round_end"
+	ifx true(wcs_race_debugging) do
+	{
+		es_log [Feature]: Phoenix Skill - [Block] Event Round_End (END)
+	}
+}
+
+//Phoenix Skill's resets the has used phoenix for the individual phoenix user
+block phoenix_round_end
+{
+	ifx true(wcs_race_debugging) do
+	{
+		es_log [Feature]: Phoenix Skill - [Block] Skill: Phoenix_Round_End (EXECUTED START)
+	}
+	es wcsgroup set has_used_phoenix server_var(wcs_player) 0
+	ifx true(wcs_race_debugging) do
+	{
+		es_log [Feature]: Phoenix Skill - [Block] Skill: Phoenix_Round_End (EXECUTED END)
+	}
+}
