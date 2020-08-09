@@ -266,7 +266,7 @@ def headshot_immunity(command):
 @PreEvent('player_hurt')
 def pre_hurt(ev):
     victim = Player.from_userid(int(ev['userid']))
-    if ev['attacker'] != 0:
+    if ev['attacker'] < 1:
         attacker = Player.from_userid(int(ev['attacker']))
         weapon = ev['weapon']
         damage = int(ev['dmg_health'])
