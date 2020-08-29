@@ -3,9 +3,6 @@ block load
 	//Loads the Eventscript commands; enabling the wcs_domole command to be used by races
 	es_load wcs/tools/commands
 
-	//Turns on Eventscript's "Noisy" mode, required for some races' skills to work 
-	es_xdoblock corelib/noisy_on
-
 	//Turns on/off logging for all the races which has logging implemented.
 	es_xset wcs_race_debugging 1
 
@@ -252,6 +249,13 @@ event player_death
 			es_log [Feature]: Phoenix Skill - [Block] Event Player_Death (END)
 		}
 	}
+}
+
+event round_start
+{
+	//Turns on Eventscript's "Noisy" mode, required for some races' skills to work
+	//This had to be done on round_start as multiple servers seem to have had issus with this not working when doing it in the block load section
+	es_xdoblock corelib/noisy_on
 }
 
 //Phoenix Skill's reset all phoenix wcsgroups for the team
