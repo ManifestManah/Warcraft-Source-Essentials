@@ -266,10 +266,9 @@ def headshot_immunity(command):
 @PreEvent('player_hurt')
 def pre_hurt(ev):
     victim = Player.from_userid(int(ev['userid']))
+    attacker = Player.from_userid(int(ev['attacker']))
     if ev['attacker'] > 1:
-        attacker = Player.from_userid(int(ev['attacker']))
         damage = int(ev['dmg_health'])
-        
         headshot_immunity = wcsgroup.getUser(victim.userid,'headshot_immunity')
         if headshot_immunity != None:
             if victim.hitgroup == HitGroup.HEAD:
