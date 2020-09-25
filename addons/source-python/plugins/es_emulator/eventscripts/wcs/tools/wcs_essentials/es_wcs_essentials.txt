@@ -114,7 +114,7 @@ block load
 	es_xset wcs_wall 0
 	es_xset wcs_ok 0
 	es_xset isdead 0
-	es_xset target
+	es_xset target 0
 	es_xset alive 0
 	es_xset wcs_magnitude 0
 	es_xset wcs_duration 0
