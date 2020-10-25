@@ -6,10 +6,8 @@ block load
 	//Turns on/off logging for all the races which has logging implemented.
 	es_xset wcs_race_debugging 1
 
-	//Setting this to 1 will turn on the Free-For-All features implemented in to the races.
-	es_xset wcs_ffa_enabled 0
-
 	//Sets all the variables that we are going to use in races' skills - normally you should not do it this way, you should use the var.txt found at cfg/source-python/wcs/var.txt
+	es_xset wcs_ffa_enabled 0
 	es_xset wcs_ffa_userid 0
 	es_xset wcs_execute_ultimate_ffa 0
 	es_xset wcs_phoenix_ffa 0
