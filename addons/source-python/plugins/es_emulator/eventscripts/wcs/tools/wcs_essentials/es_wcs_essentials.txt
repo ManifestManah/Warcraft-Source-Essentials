@@ -6,7 +6,13 @@ block load
 	//Turns on/off logging for all the races which has logging implemented.
 	es_xset wcs_race_debugging 1
 
+	//Setting this to 1 will turn on the Free-For-All features implemented in to the races.
+	es_xset wcs_ffa_enabled 0
+
 	//Sets all the variables that we are going to use in races' skills - normally you should not do it this way, you should use the var.txt found at cfg/source-python/wcs/var.txt
+	es_xset wcs_ffa_userid 0
+	es_xset wcs_execute_ultimate_ffa 0
+	es_xset wcs_phoenix_ffa 0
 	es_xset wcs_targetid_two 0
 	es_xset wcs_execute_ultimate 0
 	es_xset wcs_initial_players_struck 0
@@ -248,6 +254,22 @@ event player_death
 		{
 			wcs_log [Feature]: Phoenix Skill - [Block] Event Player_Death (END)
 		}
+	}
+	//Phonix Alternative if Free-For-All is Enabled
+	es wcsgroup get phoenix_ffa wcs_phoenix_ffa server_var(wcs_team)
+	if (server_var(wcs_phoenix_ffa) == 1) do
+	{
+		es_tell event_var(userid) #multi #green[WCS]#lightgreen Phoenix - You're reviving in #green3 #lightgreenseconds!
+		es wcs_centertell event_var(userid) Revival in 3 seconds!
+		es_delayed 1 es wcs_centertell event_var(userid) Revival in 2 seconds!
+		es_delayed 2 es wcs_centertell event_var(userid) Revival in 1 seconds!
+		es_delayed 3 es wcs_centertell event_var(userid) You've been revived! 
+		es_getplayerlocation wcs_x1 wcs_y1 wcs_z1 event_var(userid)
+		es_delayed 3 es_emitsound player event_var(userid) wcs/resurrect.mp3 1.0 0.3
+		es_delayed 3 wcs_spawn event_var(userid) 1
+		es_delayed 3.1 wcs_teleport event_var(userid) server_var(wcs_x1) server_var(wcs_y1) server_var(wcs_z1)
+		es est_effect 10 #a 0 sprites/lgtning.vmt server_var(wcs_x1) server_var(wcs_y1) server_var(wcs_z1) 75 280 3 60 20 0 10 213 255 170 6
+		es_delayed .1 est_effect 10 #a 0 sprites/lgtning.vmt server_var(wcs_x1) server_var(wcs_y1) server_var(wcs_z1) 75 280 2.9 60 20 0 10 213 255 170 8
 	}
 }
 
