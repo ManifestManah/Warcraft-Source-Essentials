@@ -48,17 +48,16 @@ block wcs_domole
 	if (server_var(wcs_exists) = 1) do
 	{
 		es_tell server_var(wcs_uid) #multi #green[WCS] #lightgreenYou're a mole, teleporting to the enemy spawn in server_var(wcs_duration) seconds!
-		es_delayed server_var(wcs_duration) es_tell server_var(wcs_uid) #multi #green[WCS] #lightgreenYou became a #greenmole!
 		es_getplayerteam wcs_team server_var(wcs_uid)
 		if (server_var(wcs_team) = 2) do
 		{
 			es_delayed server_var(wcs_duration) playerset location server_var(wcs_uid) server_var(wcs_mole_x2) server_var(wcs_mole_y2) server_var(wcs_mole_z2)
-			es_delayed server_var(wcs_duration) wcs_setfx disguise server_var(wcs_uid) = 1 0
 		}
 		if (server_var(wcs_team) = 3) do
 		{
 			es_delayed server_var(wcs_duration) playerset location server_var(wcs_uid) server_var(wcs_mole_x1) server_var(wcs_mole_y1) server_var(wcs_mole_z1)
-			es_delayed server_var(wcs_duration) wcs_setfx disguise server_var(wcs_uid) = 1 0
 		}
+		es_delayed server_var(wcs_duration) wcs_setfx disguiser server_var(wcs_uid) = 1 0
+		es_delayed server_var(wcs_duration) es_tell server_var(wcs_uid) #multi #green[WCS] #lightgreenYou became a #greenmole!
 	}
 }
