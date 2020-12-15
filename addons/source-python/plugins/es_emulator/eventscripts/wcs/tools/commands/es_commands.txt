@@ -1,6 +1,8 @@
 block load
 {
-	es_xset wcs_new_round 0
+	es_xset wcs_new_round 1
+	es_xset wcs_mole_collision 0
+	es_xset wcs_mole_collision_timer 0
 	es_xset wcs_mole_x1 0
 	es_xset wcs_mole_x2 0
 	es_xset wcs_mole_y1 0
@@ -15,12 +17,22 @@ block load
 
 event round_start
 {
+	ifx true(wcs_new_round) do
+	{
+		ifx true(wcs_mole_collision) do
+		{
+			es_set wcs_mole_collision_timer server_var(mp_freezetime)
+			es_xmath wcs_mole_collision_timer + 3
+			es wcs_foreach player wcs_targetid #alive "es wcs_setfx noblock server_var(wcs_targetid) = 1 server_var(wcs_mole_collision_timer)"
+		}
+	}
 	es_xset wcs_new_round 0
 }
 
 event round_end
 {
 	es_xset wcs_new_round 1
+	es_xset wcs_mole_collision 0
 }
 
 event player_spawn
@@ -47,6 +59,7 @@ block wcs_domole
 	es_exists wcs_exists userid server_var(wcs_uid)
 	if (server_var(wcs_exists) = 1) do
 	{
+		es_xset wcs_mole_collision 1
 		es_tell server_var(wcs_uid) #multi #green[WCS] #lightgreenYou're a mole, teleporting to the enemy spawn in server_var(wcs_duration) seconds!
 		es_getplayerteam wcs_team server_var(wcs_uid)
 		if (server_var(wcs_team) = 2) do
