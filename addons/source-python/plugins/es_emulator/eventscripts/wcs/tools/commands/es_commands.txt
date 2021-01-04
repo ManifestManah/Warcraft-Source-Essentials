@@ -15,6 +15,11 @@ block load
 	if (server_var(wcs_exists) = 0) then es_xregcmd wcs_domole wcs/tools/commands/wcs_domole "A player becomes a mole"
 }
 
+event es_map_start
+{
+	es_xset wcs_new_round 1
+}
+
 event round_start
 {
 	ifx true(wcs_new_round) do
