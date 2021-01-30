@@ -229,6 +229,14 @@ block load
 
 	//Loads the Eventscript commands; enabling the wcs_domole command to be used by races
 	es_load wcs/tools/commands
+
+	//Loads the 
+	es_xset wcs_firefix_gamecheck 0
+	es_getgame wcs_firefix_gamecheck
+	if ("Counter-Strike: Source" in server_var(wcs_firefix_gamecheck)) do
+	{
+		es_load wcs/tools/mani_firefix
+	}
 }
 
 //Phoenix Skill's ressurection part
